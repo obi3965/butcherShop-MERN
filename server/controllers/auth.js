@@ -66,3 +66,26 @@ exports.requireSignin = expressJwt({
   algorithms: ["HS256"], // added later
   userProperty: "auth",
 });
+
+
+//authentication middleware for user
+exports.isAuth = (req,res, next) =>{
+  let user = req.profile && req.auth && req.profile._id == req.auth._id
+  if(!user){
+      return res.status(403).json({
+          error:'user Access Denied'
+      })
+  }
+  next()
+}
+
+
+//a middleware, only for admin access
+exports.isAdmin = (req, res, next) =>{
+  if(req.profile.role === 0){
+      return res.status(403).json({
+          error:'Admin Acces Denied'
+      })
+  }
+  next()
+}

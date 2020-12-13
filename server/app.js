@@ -11,8 +11,10 @@ require('dotenv').config();
 const app = express()
 
 
-//
+
 const authRoutes = require('./routes/auth')
+const userRoutes = require('./routes/user')
+
 
 // middleware -
 app.use(logger('dev'));
@@ -36,7 +38,7 @@ mongoose.connect(process.env.DATABASE,{
 
   //routes middlewares
   app.use('/api', authRoutes)
-
+  app.use('/api', userRoutes)
 //start the server
 const port =  4000;
 app.listen(port, function(){
