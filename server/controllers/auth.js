@@ -31,14 +31,13 @@ exports.signin = (req, res) => {
     }
     //if user is found make sure the email,password match
     //create authenticate method in user model
- if(!user.authenticate(password)){
-    if(err || !user){
+    if (!user.authenticate(password)) {
+      if (err || !user) {
         return res.status(401).json({
-            error: 'user email & password not match'
-        })
+          error: "user email & password not match",
+        });
+      }
     }
-}
-    
 
     //generate the signed token with user id and secret
     const token = jwt.sign({ _id: user._id }, process.env.JWT_TOKEN);
@@ -52,13 +51,11 @@ exports.signin = (req, res) => {
   });
 };
 
-
 //SIGNOUT ROUTE
-exports.signout = (req,res) =>{
-  res.clearCookie('t');
-  res.json({message: "you are signed out now"})
-}
-
+exports.signout = (req, res) => {
+  res.clearCookie("t");
+  res.json({ message: "you are signed out now" });
+};
 
 //protecting the route
 exports.requireSignin = expressJwt({
@@ -67,25 +64,23 @@ exports.requireSignin = expressJwt({
   userProperty: "auth",
 });
 
-
 //authentication middleware for user
-exports.isAuth = (req,res, next) =>{
-  let user = req.profile && req.auth && req.profile._id == req.auth._id
-  if(!user){
-      return res.status(403).json({
-          error:'user Access Denied'
-      })
+exports.isAuth = (req, res, next) => {
+  let user = req.profile && req.auth && req.profile._id == req.auth._id;
+  if (!user) {
+    return res.status(403).json({
+      error: "user Access Denied",
+    });
   }
-  next()
-}
-
+  next();
+};
 
 //a middleware, only for admin access
-exports.isAdmin = (req, res, next) =>{
-  if(req.profile.role === 0){
-      return res.status(403).json({
-          error:'Admin Acces Denied'
-      })
+exports.isAdmin = (req, res, next) => {
+  if (req.profile.role === 0) {
+    return res.status(403).json({
+      error: "Admin Acces Denied",
+    });
   }
-  next()
-}
+  next();
+};
