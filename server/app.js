@@ -12,7 +12,7 @@ const app = express()
 
 
 //
-const userRoutes = require('./routes/user')
+const authRoutes = require('./routes/auth')
 
 // middleware -
 app.use(logger('dev'));
@@ -35,7 +35,7 @@ mongoose.connect(process.env.DATABASE,{
 
 
   //routes middlewares
-  app.use('/api', userRoutes)
+  app.use('/api', authRoutes)
 
 //start the server
 const port =  4000;

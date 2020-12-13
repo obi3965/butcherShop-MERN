@@ -8,7 +8,7 @@ const { userSignUpValidator, isRequestValidated } = require('../validator/valida
 
 
 //importing the routes
-const { signup, signin, signout } = require('../controllers/user')
+const { signup, signin, signout } = require('../controllers/auth')
 
 
 

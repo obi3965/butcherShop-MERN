@@ -58,3 +58,11 @@ exports.signout = (req,res) =>{
   res.clearCookie('t');
   res.json({message: "you are signed out now"})
 }
+
+
+//protecting the route
+exports.requireSignin = expressJwt({
+  secret: process.env.JWT_TOKEN,
+  algorithms: ["HS256"], // added later
+  userProperty: "auth",
+});
