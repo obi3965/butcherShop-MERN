@@ -15,6 +15,15 @@ exports.create = (req,res) => {
               error: 'Image could not be uploaded'
           })
       }
+      // check for all fields
+      const { name, description, category, author } = fields;
+
+      if (!name || !description || !author || !category ) {
+          return res.status(400).json({
+              error: 'All fields are required'
+          });
+      }
+
       let product = new Product(fields)
       
       if(files.photo){
@@ -33,5 +42,34 @@ exports.create = (req,res) => {
           })
       })
   })
+    
+}
+
+
+//Get a single product with param
+exports.singleProduct = (req,res, next, id) =>{
+    Product.findById(id).exec((err, product) => {
+        if(err || !product){
+            return res.status(404).json({
+                error: errorHandler(err)
+            })
+        }
+        req.product = product
+           
+         next()   
+        
+        
+    })
+    
+}
+
+
+//read a single product by id
+exports.read = (req,res) =>{
+    req.product.photo = undefined;
+    return res.status(200).json(
+       req.product 
+    )
+         
     
 }
