@@ -3,7 +3,8 @@ const Product = require('../models/product');
 const _= require('lodash')
 const formidable = require('formidable');
 
-const fs = require('fs')
+const fs = require('fs');
+
 
 
 exports.create = (req,res) => {
@@ -67,9 +68,28 @@ exports.singleProduct = (req,res, next, id) =>{
 //read a single product by id
 exports.read = (req,res) =>{
     req.product.photo = undefined;
-    return res.status(200).json(
+    return res.json(
        req.product 
     )
          
     
 }
+
+
+//Remove the product
+exports.remove = (req,res) => {
+    let product = req.product
+    product.remove((err, deleteProduct)=>{
+        if(err){
+            return res.status(400).json({
+                error: errorHandler(err)
+            })
+        }
+        res.json({
+            deleteProduct,
+            message: "product deleted"
+        })
+    })
+}
+
+
