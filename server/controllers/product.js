@@ -114,6 +114,21 @@ exports.listRelated = (req,res) => {
   })
 }
 
+
+//get all categories which used in products
+exports.listCategories = (req, res) => {
+    Product.distinct('category', {}, (err, categories) => {
+        if (err) {
+            return res.status(400).json({
+                error: 'Categories not found'
+            });
+        }
+        res.json({
+            categories: categories
+        });
+    });
+};
+
 //Remove the product
 exports.remove = (req, res) => {
   let product = req.product;
