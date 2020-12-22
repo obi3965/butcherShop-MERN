@@ -95,6 +95,24 @@ exports.list = (req, res) => {
 };
 
 
+//product based on query
+exports.listRelated = (req,res) => {
+  let limit = req.query.limit ? parseInt(req.query.limit) : 6;
+  Product.find({_id: {$ne: req.product}, category: req.product.category})
+  .limit(limit)
+  .populate("category" , '_id name')
+  .exec((err, products) => {
+      if(err){
+          return res.status(400).json({
+              error: 'products not found'
+          })
+      }
+      res.json({
+          result:products.length,
+          products:products
+      });
+  })
+}
 
 //Remove the product
 exports.remove = (req, res) => {
