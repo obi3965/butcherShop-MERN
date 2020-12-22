@@ -2,7 +2,7 @@ const { errorHandler } = require("../errorHandler/AppError");
 const Category = require("../models/category");
 const Product = require("../models/product");
 
-exports.create = (req, res) => {
+exports.createCategory = (req, res) => {
   const { name } = req.body;
   const category = new Category({
     name,
