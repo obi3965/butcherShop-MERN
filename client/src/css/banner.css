@@ -1,0 +1,50 @@
+.banner{
+    background-image: url('./../img/banner1.jpg');
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+.banner-items{
+    position: absolute;
+    top: 45%;
+    left: 10%;
+}
+.banner-items h1{
+    font-family:'Bungee Outline', cursive; 
+    text-transform: capitalize;
+    font-weight: 600;
+    font-size: 45px;
+    color: #eac100;
+    letter-spacing: 1px;
+}
+.banner-items h2{
+    font-family: 'Luckiest Guy', cursive; 
+    text-transform: capitalize;
+    font-weight: 500;
+    font-size: 55px;
+    color: #ff304f;
+    letter-spacing: 1px;
+    
+}
+.banner-items p{
+    font-family: 'Luckiest Guy', cursive; 
+    text-transform: capitalize;
+    font-weight: 400;
+    font-size: 30px;
+    color: #fff;
+    letter-spacing: 1.5px;
+}
+.btn-danger{
+    background-color: #ff304f !important;
+    padding: 10px 35px;
+    text-transform: capitalize;
+    border: none !important;
+    outline: none !important;
+    border-radius: 25px;
+}
+.btn-danger:hover{
+    background-color: #eac100 !important;
+    transition: ease-in-out all .4s;
+}

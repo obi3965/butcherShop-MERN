@@ -1,0 +1,37 @@
+.about{
+    margin-top: 200px;
+}
+.about-desc h2{
+    font-family: 'Nova Flat', cursive;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    font-weight: 700;
+    font-size: 40px;
+    color: #000;
+}
+.about-desc strong{
+    margin-top: 12px;
+}
+.about-desc p{
+    margin-top: 30px;
+}
+.about-img img{
+    width: 100%;
+    height: auto;
+}
+.btn-outline{
+    background-color: #ff304f !important;
+    padding: 12px 40px;
+    text-transform: capitalize;
+    border: none !important;
+    outline: none !important;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 18px;
+    letter-spacing: 1px;
+    margin-top: 10px;
+}
+.btn-outline:hover{
+    background-color: #eac100 !important;
+    transition: ease-in-out all .4s
+}

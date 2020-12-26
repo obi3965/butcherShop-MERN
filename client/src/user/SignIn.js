@@ -1,11 +1,15 @@
 import React from 'react'
+import Layout from '../core/Layout'
 
 const SignIn = () => {
     
 
     return (
         <>
-          <p>signin</p>  
+         <Layout title="our signin" desc="please signin to get more info">
+           
+           </Layout> 
+            
         </>
     )
 }

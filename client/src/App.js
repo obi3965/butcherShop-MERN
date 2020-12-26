@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import './App.css';
-import { Button } from 'reactstrap';
+
 import Axios from "axios";
 function App() {
     const [resState, setData] = useState('');
@@ -23,7 +23,7 @@ function App() {
 })
   return (
     <div className="App">
-      <Button color="primary"></Button>
+      
       {resState.data && resState.data.map(date => {
                 return <p>{date.products.name}</p>
             })}
