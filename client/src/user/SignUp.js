@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Layout from "../core/Layout";
-import { API } from "../config";
+import { signup } from '../auth'
+import { Link } from 'react-router-dom'
+
 
 const Signup = () => {
   //we use object for every single input in useState
@@ -16,23 +18,6 @@ const Signup = () => {
     setvalues({ ...values, error: false, [name]: e.target.value });
   };
 
-  const signup = (user) => {
-    // console.log(name, email, password)
-    return fetch(`${API}/signup`, {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(user),
-    })
-      .then((res) => {
-        return res.json();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
 
   const { name, email, password, success, error } = values;
   const clickSubmit = (e) => {
@@ -116,7 +101,7 @@ const Signup = () => {
       className="alert alert-danger"
       style={{ display: success ? "" : "none" }}
     >
-      your are successfully signed up, please signin now
+      your are successfully signed up, please <Link to="/signin">signing</Link> now
     </div>
   );
 
@@ -127,7 +112,7 @@ const Signup = () => {
           {showError()}
           {showSuccess()}
           {signUpForm()}
-          {JSON.stringify(values)}
+          {/* {JSON.stringify(values)} */}
         </div>
 
         {/* <p>{ API }</p>  */}
