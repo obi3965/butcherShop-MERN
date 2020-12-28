@@ -5,5 +5,30 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    margin-top: 80px;
+    margin-top: 85px;
+}
+.product-title{
+    width: 350px;
+    margin: auto;
+   padding-top: 30px;
+}
+.product-title h2{
+    font-family: 'Nova Flat', cursive;
+    text-transform: capitalize;
+    letter-spacing: 1px;
+    font-weight: 700;
+    color: #fff;
+    font-size: 35px;
+    text-align: center;
+}
+.product-title p{
+    color: #fff;
+    letter-spacing: 1px;
+    font-size: 19px;
+    text-align: center;
+}
+.underline2{
+    border-bottom: 3px dashed #eac100;
+    width: 270px;
+    margin: 10px auto;
 }
