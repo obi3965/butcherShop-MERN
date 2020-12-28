@@ -50,11 +50,11 @@ const Menu = ({ history }) => {
             </li>
             <li className='nav-item'>
               <NavLink
-                to='/kyllinge'
+                to='/dashboard'
                 className='nav-links' activeClassName="is-active"
                 onClick={closeMobileMenu}
               >
-                kyllinge
+                Dashboard
               </NavLink>
             </li>
             
