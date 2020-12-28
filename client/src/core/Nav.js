@@ -50,7 +50,7 @@ const Menu = ({ history }) => {
             </li>
             <li className='nav-item'>
               <NavLink
-                to='/dashboard'
+                to='/user/dashboard'
                 className='nav-links' activeClassName="is-active"
                 onClick={closeMobileMenu}
               >

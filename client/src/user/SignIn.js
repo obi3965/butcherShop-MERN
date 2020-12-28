@@ -13,6 +13,7 @@ const Signin = () => {
     });
 
     const { email, password, loading, error, redirectToReferrer } = values;
+    //destructure the user
     const { user } = isAuthenticated();
 
     const handleChange = name => event => {

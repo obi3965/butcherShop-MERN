@@ -5,30 +5,30 @@ import { isAuthenticated } from '../auth'
 import { Link } from 'react-router-dom'
 /**
 * @author
-* @function Dashboard
+* @function AdminDashboard
 **/
 
-const Dashboard = (props) => {
+const AdminDashboard = (props) => {
 
     const {user: {_id, name, email, role}} = isAuthenticated()
 
-    const userLinks = () =>{
+    const adminLinks = () =>{
         return (
             <div className="card">
                 <h4 className="card-header">user links</h4>
                  <ul className="list-group">
                      <li className="list-group-item">
-                         <Link className="nav-link" to="/cart">my cart</Link>
+                         <Link className="nav-link" to="/category/create">create category</Link>
                      </li>
                      <li className="list-group-item">
-                     <Link className="nav-link" to="/profile/update">update profile</Link>
+                     <Link className="nav-link" to="/product/create">create product</Link>
                      </li>
                  </ul>
             </div>
         )
     }
 
-   const userInfo = () =>{
+   const adminInfo = () =>{
        return (
        
         <div className="card profile-card">
@@ -47,26 +47,17 @@ const Dashboard = (props) => {
        )
    }
 
-   const purchaseHistory = () =>{
-       return (
-           <div className="card mb-5">
-               <h3 className="card-header">purchase history</h3>
-               <ul className="list-group">
-                   <li className="list-group-item">history</li>
-               </ul>
-           </div>
-       )
-   }
+   
   return(
     <Layout title="Dashboard" description={`G'day ${name}`}>
        <div className="container">
        <div className="row py-3 flex-items-sm-center">
      <div className="col-lg-4 col-xs-12 col-sm-3 py-2 clearfix">
-       {userLinks()}
+       {adminLinks()}
      </div>
          <div className="col-lg-8 col-xs-12 col-sm-3 py-2 clearfix">
-         {userInfo()}
-         {purchaseHistory()}
+         {adminInfo()}
+        
      </div>
       </div>
        </div>
@@ -75,4 +66,4 @@ const Dashboard = (props) => {
 
  }
 
-export default Dashboard
+export default AdminDashboard
