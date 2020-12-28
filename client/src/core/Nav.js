@@ -48,7 +48,10 @@ const Menu = ({ history }) => {
                 lamme
               </NavLink>
             </li>
-            <li className='nav-item'>
+           
+            
+            {isAuthenticated() && isAuthenticated().user.role === 0 && (
+               <li className='nav-item'>
               <NavLink
                 to='/user/dashboard'
                 className='nav-links' activeClassName="is-active"
@@ -57,7 +60,19 @@ const Menu = ({ history }) => {
                 Dashboard
               </NavLink>
             </li>
-            
+            )}
+
+           {isAuthenticated() && isAuthenticated().user.role === 1 && (
+               <li className='nav-item'>
+              <NavLink
+                to='/admin/dashboard'
+                className='nav-links' activeClassName="is-active"
+                onClick={closeMobileMenu}
+              >
+               Admin Dashboard
+              </NavLink>
+            </li>
+            )}
             <div className="user">
               {!isAuthenticated() &&(
                 <Fragment>
