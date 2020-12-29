@@ -15,7 +15,7 @@ const AdminDashboard = (props) => {
     const adminLinks = () =>{
         return (
             <div className="card">
-                <h4 className="card-header">user links</h4>
+                <h4 className="card-header">Admin links</h4>
                  <ul className="list-group">
                      <li className="list-group-item">
                          <Link className="nav-link" to="/category/create">create category</Link>
