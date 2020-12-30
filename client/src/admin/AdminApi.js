@@ -1,8 +1,8 @@
 import { API } from "../config";
 
-//for the signup
+//for the create category in admin dashboard
  export const createCategory = (userId,token, category ) => {
-    // console.log(name, email, password)
+   
     return fetch(`${API}/category/create/${userId}`, {
       method: "POST",
       headers: {
@@ -11,6 +11,26 @@ import { API } from "../config";
         Authorization: `Bearer ${token}`
       },
       body: JSON.stringify(category),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+
+  //create products in admin dashboard
+  export const createProduct = (userId,token, product ) => {
+   
+    return fetch(`${API}/product/create/${userId}`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${token}`
+      },
+      body: product
     })
       .then((res) => {
         return res.json();

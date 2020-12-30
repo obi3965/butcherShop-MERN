@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import Layout from '../core/Layout'
 import '../css/dashboard.css'
 import { isAuthenticated } from '../auth'
-//import { Link } from 'react-router-dom'
 import { createCategory } from './AdminApi'
+import { Link } from 'react-router-dom'
 
 const AddCategory = () => {
     const [name, setName] = useState('');
@@ -62,6 +62,12 @@ const AddCategory = () => {
             return <h3 className="text-danger">{name} should be unique</h3>
         }
     }
+
+    const goBack = () => (
+        <div className="back">
+            <Link to="/admin/dashboard">got to dashboard</Link>
+        </div>
+    )
     return(
         <Layout title="Add category" description={`G'day ${user.name}, now you can add the categories`}>
            <div className="container">
@@ -71,7 +77,7 @@ const AddCategory = () => {
              {showSuccess()}
              {showError()}
              {newCategoryForm()}
-            
+             {goBack()}
          </div>
           </div>
            </div>
