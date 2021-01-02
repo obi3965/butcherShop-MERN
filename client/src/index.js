@@ -6,10 +6,11 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Routes from './Routes';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
+  <>
+   
     <Routes/>
-  </React.StrictMode>,
+    <App/>
+  </>,
   document.getElementById('root')
 );
 

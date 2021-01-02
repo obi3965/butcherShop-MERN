@@ -1,143 +1,175 @@
-import React, { useState, useEffect } from 'react'
-import Layout from '../core/Layout'
-import '../css/dashboard.css'
-import { isAuthenticated } from '../auth'
-import { createProduct } from './AdminApi'
-import { Link } from 'react-router-dom'
-
+import React, { useState, useEffect } from 'react';
+import Layout from '../core/Layout';
+import { isAuthenticated } from '../auth';
+import { Link } from 'react-router-dom';
+import { createProduct, getCategories } from './AdminApi';
 
 const AddProduct = () => {
- 
- const [values,setValues] = useState({
-    name:'',
-    description:'',
-    price:'',
-    categories:[],
-    category:'',
-    shipping:'',
-    quantity:'',
-    photo:'',
-    loading:false,
-    error:'',
-    createdProduct:'',
-    redirectToProfile:false,
-    formData:'',
-});
+    const [values, setValues] = useState({
+        name: '',
+        description: '',
+        price: '',
+        categories: [],
+        category: '',
+        shipping: '',
+        quantity: '',
+        photo: '',
+        loading: false,
+        error: '',
+        createdProduct: '',
+        redirectToProfile: false,
+        formData: ''
+    });
 
+    const { user, token } = isAuthenticated();
+    const {
+        name,
+        description,
+        price,
+        categories,
+        category,
+        shipping,
+        quantity,
+        loading,
+        error,
+        createdProduct,
+        redirectToProfile,
+        formData
+    } = values;
 
+    // load categories and set form data
+    const init = () => {
+        getCategories().then(data => {
+            if (data.error) {
+                setValues({ ...values, error: data.error });
+            } else {
+                setValues({
+                    ...values,
+                    categories: data,
+                    formData: new FormData()
+                });
+            }
+        });
+    };
 
-//we destructure everything
-const {
-    name,
-     description,
-     price,
-     categories,
-     category,
-     shipping,
-     quantity,
-     photo,
-     loading,
-     error,
-     createdProduct,
-     redirectToProfile,
-     formData
- } = values
+    useEffect(() => {
+        init();
+    }, []);
 
- useEffect(() => {
-    setValues({...values, formData: new FormData()})
- }, []);
-const handleChange = name => event =>{
-  const value = name === 'photo' ? event.target.files[0] : event.target.value
-  setValues({...values, [name]: value})
-  formData.set(name, value)
-}
+    const handleChange = name => event => {
+        const value = name === 'photo' ? event.target.files[0] : event.target.value;
+        formData.set(name, value);
+        setValues({ ...values, [name]: value });
+    };
 
+    const clickSubmit = event => {
+        event.preventDefault();
+        setValues({ ...values, error: '', loading: true });
 
-const clickSubmit = (e) => {
-e.preventDefault();
-  
-setValues({...values, error: '', loading: true})
-createProduct(user._id, token, formData)
-.then( data =>{
-    if(data.error){
-        setValues({...values, error: data.error})
-    }else{
-        setValues({
-            ...values,
-            name:'',
-            description:'',
-            quantity:'',
-            photo:'',
-            price:'',
-            loading:false,
-            createdProduct:data.name,
-        })
-    }
-})
-}
+        createProduct(user._id, token, formData).then(data => {
+            if (data.error) {
+                setValues({ ...values, error: data.error });
+            } else {
+                setValues({
+                    ...values,
+                    name: '',
+                    description: '',
+                    photo: '',
+                    price: '',
+                    quantity: '',
+                    loading: false,
+                    createdProduct: data.name
+                });
+            }
+        });
+    };
 
- const newPostForm = () => (
-     <form onSubmit={clickSubmit}>
-         <div className="form-group">
-             <label htmlFor="" className="btn btn-warning" >
-                 <input type="file" onChange={handleChange('photo')} name="photo" accept="image/*" />
-             </label>
-         </div>
-         <div className="form-group">
-             <label htmlFor="name" className="text-muted">name</label>
-             <input type="text" className="form-control" required autoFocus value={name} onChange={handleChange('name')}/>
-            </div>
+    const newPostForm = () => (
+        <form className="mb-3" onSubmit={clickSubmit}>
+            <h4>Post Photo</h4>
             <div className="form-group">
-             <label htmlFor="" className="text-muted">description</label>
-             <textarea type="text" className="form-control" required autoFocus value={description} onChange={handleChange('description')}></textarea>
+                <label className="btn btn-secondary">
+                    <input onChange={handleChange('photo')} type="file" name="photo" accept="image/*" />
+                </label>
             </div>
-            <div className="form-group">
-             <label htmlFor="price" className="text-muted">price</label>
-             <input type="number" className="form-control" required autoFocus value={price} onChange={handleChange('price')}/>
-            </div>
-            <div className="form-group">
-             <label htmlFor="" className="text-muted">categories</label>
-             <select type="text" className="form-control" required autoFocus onChange={handleChange('category')}>
-                 <option value='kalve Kød'>we</option>
-                 <option value='lamme Kød'>ff</option>
-                 <option value='kylling'>gg</option>
-             </select>
-            </div>
-            <div className="form-group">
-             <label htmlFor="quantity" className="text-muted">quantity</label>
-             <input type="number" className="form-control" required autoFocus value={quantity} onChange={handleChange('quantity')}/>
-            </div>
-            <div className="form-group">
-             <label htmlFor="" className="text-muted">shipping</label>
-             <select type="text" className="form-control" required autoFocus onChange={handleChange('shipping')}>
-                 <option value='0'>no</option>
-                 <option value='1'>yes</option>
-                 
-             </select>
-            </div>
-   <button className="btn btn-primary">send</button>
-     </form>
- )
 
+            <div className="form-group">
+                <label className="text-muted">Name</label>
+                <input onChange={handleChange('name')} type="text" className="form-control" value={name} />
+            </div>
 
+            <div className="form-group">
+                <label className="text-muted">Description</label>
+                <textarea onChange={handleChange('description')} className="form-control" value={description} />
+            </div>
 
- //destructure the user and token
- const { user, token } = isAuthenticated()
+            <div className="form-group">
+                <label className="text-muted">Price</label>
+                <input onChange={handleChange('price')} type="number" className="form-control" value={price} />
+            </div>
 
-    return(
-        <Layout title="Add product" description={`G'day ${user.name}, now you can add the products`}>
-           <div className="container">
-           <div className="row py-3 flex-items-sm-center">
-         
-             <div className="col-lg-8 col-xs-12 offset md-2 col-sm-3 py-2 clearfix">
-              {newPostForm()}
-         </div>
-          </div>
-           </div>
+            <div className="form-group">
+                <label className="text-muted">Category</label>
+                <select onChange={handleChange('category')} className="form-control">
+                    <option>Please select</option>
+                    {categories &&
+                        categories.map((c, i) => (
+                            <option key={i} value={c._id}>
+                                {c.name}
+                            </option>
+                        ))}
+                </select>
+            </div>
+
+            <div className="form-group">
+                <label className="text-muted">Shipping</label>
+                <select onChange={handleChange('shipping')} className="form-control">
+                    <option>Please select</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                </select>
+            </div>
+
+            <div className="form-group">
+                <label className="text-muted">Quantity</label>
+                <input onChange={handleChange('quantity')} type="number" className="form-control" value={quantity} />
+            </div>
+
+            <button className="btn btn-outline-primary">Create Product</button>
+        </form>
+    );
+
+    const showError = () => (
+        <div className="alert alert-danger" style={{ display: error ? '' : 'none' }}>
+            {error}
+        </div>
+    );
+
+    const showSuccess = () => (
+        <div className="alert alert-info" style={{ display: createdProduct ? '' : 'none' }}>
+            <h2>{`${createdProduct}`} is created!</h2>
+        </div>
+    );
+
+    const showLoading = () =>
+        loading && (
+            <div className="alert alert-success">
+                <h2>Loading...</h2>
+            </div>
+        );
+
+    return (
+        <Layout title="Add a new product" description={`G'day ${user.name}, ready to add a new product?`}>
+            <div className="row">
+                <div className="col-md-8 offset-md-2">
+                    {showLoading()}
+                    {showSuccess()}
+                    {showError()}
+                    {newPostForm()}
+                </div>
+            </div>
         </Layout>
-       )
-}
+    );
+};
 
-
-
-export default AddProduct
+export default AddProduct;

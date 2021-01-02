@@ -1,7 +1,10 @@
-import React,{Fragment,useState} from 'react'
+import React,{Fragment,useEffect,useState} from 'react'
 import { withRouter, NavLink } from "react-router-dom";
 import { signout, isAuthenticated } from '../auth';
+import {getCategories} from './CoreApi'
+
 import '../css/nav.css'
+import CheckCategories from './CheckCategories';
 /**
 * @author
 * @function Menu
@@ -11,6 +14,22 @@ const Menu = ({ history }) => {
     const [ click, setClick ] = useState(false)
     const handleClick = () => setClick(!click)
     const closeMobileMenu = () => setClick(false)
+    const [categories, setCategories ] = useState([]);
+    const [error, setError] = useState(false);
+
+  const init = () => {
+    getCategories().then( data =>{
+      if(data.error){
+        setError(data.error)
+      }else{
+        setCategories(data)
+      }
+    })
+  }
+
+    useEffect(() => {
+     init()
+    }, [])
   return(
    
   <>
@@ -31,23 +50,10 @@ const Menu = ({ history }) => {
               </NavLink>
             </li>
             <li className='nav-item'>
-              <NavLink
-                to='/kalve'
-                className='nav-links' activeClassName="is-active"
-                onClick={closeMobileMenu}
-              >
-                kalve
-              </NavLink>
+              
+             <CheckCategories categories={categories} />
             </li>
-            <li className='nav-item'>
-              <NavLink
-                to='/lamme'
-                className='nav-links' activeClassName="is-active"
-                onClick={closeMobileMenu}
-              >
-                lamme
-              </NavLink>
-            </li>
+            
            
             
             {isAuthenticated() && isAuthenticated().user.role === 0 && (
