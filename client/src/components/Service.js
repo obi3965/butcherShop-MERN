@@ -8,8 +8,8 @@ import '../css/services.css'
 const Service = (props) => {
   return(
     <div className="services">
-        <div className="container bg-dark">
-            <div className="service-content">
+        <div className="container">
+            
             <div className="row">
                 <div className="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                   <div className="service-box">
@@ -40,7 +40,7 @@ const Service = (props) => {
                   </div>
                 </div>
             </div>
-            </div>
+            
         </div>
     </div>
    )

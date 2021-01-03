@@ -6,7 +6,7 @@ import { NavLink } from 'react-router-dom'
 * @function CheckCategories
 **/
 
-const CheckCategories = ({categories}) => {
+const CheckCategories = ({categories, handleFilters}) => {
     const [checked,setChecked] = useState([]);
 
 
@@ -19,12 +19,22 @@ const CheckCategories = ({categories}) => {
          }else{
              newCheckedCategoryId.splice(currentCategoryId, 1)
          }
-         console.log(newCheckedCategoryId)
+        //  console.log(newCheckedCategoryId)
          setChecked(newCheckedCategoryId)
+         handleFilters(newCheckedCategoryId)
        }
       return categories.map((c, i) =>(
+        <li key={i} className="list-unstyled">
+        <input
+            onChange={handleToggle(c._id)}
+            value={checked.indexOf(c._id === -1)}
+            type="checkbox"
+            className="form-check-input"
+        />
+        <label className="form-check-label">{c.name}</label>
+    </li>
       
-          <NavLink value={checked.indexOf(c._id === -1)} onClick={handleToggle(c._id)} key={i} to={c.name}>{c.name}</NavLink>
+        //   <NavLink value={checked.indexOf(c._id === -1)} onClick={handleToggle(c._id)} key={i} to={c.name}>{c.name}</NavLink>
       
   )) 
     

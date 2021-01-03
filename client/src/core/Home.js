@@ -5,6 +5,9 @@ import Card from './Card';
 import Banner from '../components/Banner'
 import ProductLayout from '../components/ProductLayout'
 import About from '../components/About'
+import Service from '../components/Service'
+
+
 const Home = () => {
 const [byArrival,setByArrival] = useState([]);
 const [bySell,setBySell] = useState([]);
@@ -43,22 +46,34 @@ useEffect(() => {
   return (
     <>
   <Banner />
+  
+    <Service />
+  
   <About/>
   <ProductLayout />
  
-    <Layout title="home page" description="home desc">
-      
+    <Layout title="" description="">
+      <div className="product-title">
+           <h1>product by arrival</h1>
+           <div className="underline3"></div>
+         </div>
        <div className="row">
-         <h1>product by arrival</h1>
+         
+         
          {byArrival.map(( product, i) => (
            <div key={i} className="col-md-4">
               <Card product={ product } />
            </div>
          )) }
        </div>
+     
 
+       <div className="product-title-2">
+           <h1>product by sell</h1>
+           <div className="underline4"></div>
+         </div>
        <div className="row">
-         <h1>product be sell</h1>
+         
          {bySell.map(( product, i) => (
            <div key={i} className="col-md-4">
               <Card product={ product } />

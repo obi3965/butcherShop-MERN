@@ -191,6 +191,34 @@
     margin-left: 8px;
     text-transform: capitalize;
 }
+
+
+.product-title h1{
+    text-align: center;
+    text-transform: capitalize;
+    font-family: 'Nova Flat', cursive;
+    font-weight: 600;
+    /* letter-spacing: 1px; */
+    font-size: 27px;margin-top: 10px;
+}
+.product-title-2 h1{
+    text-align: center;
+    text-transform: capitalize;
+    font-family: 'Nova Flat', cursive;
+    font-weight: 600;
+    /* letter-spacing: 1px; */
+    font-size: 27px;margin-top: 40px;
+}
+.underline3{
+    border-bottom: 3px dashed #eac100;
+    width: 230px;
+    margin: 10px auto;
+}
+.underline4{
+    border-bottom: 3px dashed #eac100;
+    width: 200px;
+    margin: 10px auto;
+}
 @media only screen and (max-width:990px) {
     .product-grid {
         margin-bottom: 30px
