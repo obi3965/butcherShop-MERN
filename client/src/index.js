@@ -9,7 +9,7 @@ ReactDOM.render(
   <>
    
     <Routes/>
-    <App/>
+    
   </>,
   document.getElementById('root')
 );

@@ -17,19 +17,19 @@ const Card = ({ product }) => {
                 </div>
                 <ul className="social">
                   <li>
-                    <a href ="">
+                    <Link to="">
                       <i className="fa fa-search" />
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href ="">
+                    <Link to="">
                       <i className="fa fa-shopping-bag" />
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href ="">
+                    <Link to="">
                       <i className="fa fa-shopping-cart" />
-                    </a>
+                    </Link>
                   </li>
                 </ul>
                 
@@ -38,16 +38,16 @@ const Card = ({ product }) => {
              
               <div className="product-content">
                 <h3 className="title">
-                  <a href="#"> {product.name} </a>
+                  <Link to=""> {product.name} </Link>
                 </h3>
                 <div className="price">
                      {product.price} kr
                  
                 </div>
-                <button className="add-to-cart" href>
+                <button className="add-to-cart" >
                   Add To Cart
                 </button>
-                <button className="view" href>
+                <button className="view" >
                  view details
                 </button>
               </div>

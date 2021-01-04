@@ -1,11 +1,11 @@
 .navbar{
-    background-color: #fff !important;
+    background-color: #000 !important;
     padding: 10px;
 }
 
 
 .underline1{
-    border-bottom: 2px solid #ff304f;
+    border-bottom: 2px solid #e60c2d;
     width: 210px;
 }
 .user{
@@ -16,18 +16,18 @@
     align-items: flex-end;
 }
 .is-active{
-    color: #ff304f !important;
+    color: #e60c2d!important;
 }
 
 
 .user-reg{
-    color: #ff304f;
+    color: #e60c2d;
     line-height: 50px;
     font-size: 20px;
     font-weight: 600;
 }
 .navbar {
-    background: #fff;
+    background: #000;
     height: 80px;
     display: flex;
     justify-content: center;
@@ -47,7 +47,7 @@
   }
   
   .navbar-logo {
-    color:#ff304f;
+    color: #fff;
     font-family: 'Nova Flat', cursive;
     font-weight: 400;
     font-size: 23px;
@@ -78,7 +78,7 @@
   }
   
   .nav-links {
-    color: #000000;
+    color: #fff;
     display: flex;
     align-items:center;
     text-decoration: none !important;
@@ -91,13 +91,13 @@
   }
   
   .nav-links:hover {
-    border-bottom: 4px solid #ff304f;
+    border-bottom: 4px solid #eac100;
     transition: all 0.2s ease-out;
-     color: #000000 !important;
+     color: #eac100 !important;
   }
   .nav-links.is-active{
-    border-bottom: 4px solid #ff304f;
-    color: #ff304f !important;
+    border-bottom: 4px solid #eac100;
+    color: #eac100 !important;
   }
   .fa-bars {
     color: #ff304f;

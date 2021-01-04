@@ -34,11 +34,12 @@ const Menu = ({ history }) => {
                 Home
               </NavLink>
             </li>
-            {/* <li className='nav-item'>
-              
-             <CheckCategories categories={categories} />
-            </li> */}
-            
+           
+            <li className='nav-item'>
+              <NavLink to='/meats' className='nav-links' activeClassName="is-active" onClick={closeMobileMenu} exact={true}>
+                meats
+              </NavLink>
+            </li>
            
             
             {isAuthenticated() && isAuthenticated().user.role === 0 && (

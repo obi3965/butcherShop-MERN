@@ -1,6 +1,6 @@
 .banner{
     background-image: url('./../img/banner1.jpg');
-    height: 100vh;
+    height: 90vh;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -8,8 +8,9 @@
 }
 .banner-items{
     position: absolute;
-    top: 40%;
+    top: 35%;
     left: 10%;
+    transform: translateY(-35%, -10%);
 }
 .banner-items h1{
     font-family:'Bungee Outline', cursive; 
@@ -24,7 +25,7 @@
     text-transform: capitalize;
     font-weight: 500;
     font-size: 55px;
-    color: #ff304f;
+    color: #e60c2d;
     letter-spacing: 1px;
     
 }
@@ -37,12 +38,14 @@
     letter-spacing: 1.5px;
 }
 .btn-danger{
-    background-color: #ff304f !important;
-    padding: 10px 35px;
+    background-color: #e60c2d !important;
+    padding: 12px 38px;
     text-transform: capitalize;
     border: none !important;
     outline: none !important;
     border-radius: 25px;
+    margin-top: 20px;
+    font-size: 17px;
 }
 .btn-danger:hover{
     background-color: #eac100 !important;

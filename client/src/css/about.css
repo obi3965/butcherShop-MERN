@@ -20,18 +20,21 @@
     height: auto;
 }
 .btn-outline{
-    background-color: #ff304f !important;
-    padding: 12px 40px;
+    background-color: #e60c2d !important;
+    padding: 12px 35px;
     text-transform: capitalize;
     border: none !important;
     outline: none !important;
     border-radius: 25px;
     color: #fff;
-    font-size: 18px;
+    font-size: 16px;
     letter-spacing: 1px;
     margin-top: 10px;
+    
+    transition: ease-in-out all .4s;
 }
 .btn-outline:hover{
     background-color: #eac100 !important;
-    transition: ease-in-out all .4s
+    transition: ease-in-out all .4s;
+    color: #fff;
 }
