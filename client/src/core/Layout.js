@@ -8,7 +8,7 @@ import React from 'react'
 const Layout = ({ title = 'title', desc = 'desc', children }) => {
   return(
     <div className="layout">
-       <div className="container">
+       
            <div className="row">
                <div className="col-lg-12">
                 {/* <h2>{title}</h2> */}
@@ -21,7 +21,7 @@ const Layout = ({ title = 'title', desc = 'desc', children }) => {
                </div>
            </div>
        </div>
-    </div>
+   
    )
 
  }

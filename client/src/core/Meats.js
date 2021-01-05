@@ -99,7 +99,7 @@ const Meats = () => {
         
             <div className="container-fluid">
             <div className="row">
-                <div className="col-3">
+                <div className="col-lg-3">
                     <h4>Filter by categories</h4>
                     <ul>
                         <CheckCategories
@@ -121,11 +121,11 @@ const Meats = () => {
                     </div>
                 </div>
 
-                <div className="col-9">
+                <div className="col-lg-9">
                     <h2 className="mb-4">Products</h2>
                     <div className="row">
                         {filteredResults.map((product, i) => (
-                            <div key={i} className="col-4 mb-3">
+                            <div key={i} className="col-lg-4">
                                 <Card product={product} />
                             </div>
                         ))}

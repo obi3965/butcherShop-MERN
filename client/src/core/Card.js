@@ -7,8 +7,6 @@ import Image from './Image'
 const Card = ({ product }) => {
   return (
     <>
-    
-      
              <div className="product-grid">
               <div className="product-image">
                 <div className="pic-1">
