@@ -2,6 +2,7 @@ import React from 'react'
 import '../css/productLayout.css'
 import '../css/card.css'
 import { Link } from 'react-router-dom'
+import Search from '../core/Search'
 
 
 /**

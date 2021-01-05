@@ -6,6 +6,9 @@ import Banner from "../components/Banner";
 import ProductLayout from "../components/ProductLayout";
 import About from "../components/About";
 import Service from "../components/Service";
+import Search from "./Search";
+import '../css/home.css'
+
 
 const Home = () => {
   const [byArrival, setByArrival] = useState([]);
@@ -49,14 +52,19 @@ const Home = () => {
 
       <About />
       <ProductLayout />
-
+       
+       
+        <div>
+          <Search />
+        </div>
+       
      <div className="container">
      <Layout
             title="FullStack React Node MongoDB Ecommerce App"
             description="Node React E-commerce App"
            >
         
-            {/* <Search /> */}
+            
             <div className="product-title-2">
           <h1>product by sell</h1>
           <div className="underline4"></div>
