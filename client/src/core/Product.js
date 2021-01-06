@@ -1,5 +1,6 @@
 import React,{ useState, useEffect} from 'react'
-import Layout from './Layout'
+import moment from "moment";
+
 import { read, listRelated } from './CoreApi'
 import Card from './Card';
 /**
@@ -36,6 +37,15 @@ const Product = (props) => {
         loadSingleProduct(productId);
     }, [props]);
 
+
+    const showStock = quantity => {
+        return quantity > 0 ? (
+          <span className="badge badge-primary badge-pill">In Stock </span>
+        ) : (
+          <span className="badge badge-primary badge-pill">Out of Stock </span>
+        );
+      };
+
   return(
     <div className="container-fluid"  title={product && product.name}
     description={product && product.description && product.description.substring(0, 100)}
@@ -51,6 +61,8 @@ const Product = (props) => {
                        </div>
                        <div className="col-lg-6">
                            <p> {product.description} </p>
+                           <p className="black-8">Added on {moment(product.createdAt).fromNow()}</p>
+                           {showStock(product.quantity)}
                        </div>
                      </div>
                  

@@ -18,7 +18,14 @@
 .is-active{
     color: #e60c2d!important;
 }
-
+.cart-badge, .cart-badge:hover
+ {
+    border-radius: 50%;
+    font-size: 12px;
+    padding: 4px 8px;
+    background:#eac100 ;
+    color: #fff;
+}
 
 .user-reg{
     color: #e60c2d;

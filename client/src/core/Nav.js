@@ -1,7 +1,7 @@
 import React,{Fragment,useState} from 'react'
-import { withRouter, NavLink } from "react-router-dom";
+import { withRouter, NavLink, Link } from "react-router-dom";
 import { signout, isAuthenticated } from '../auth';
-
+import { itemTotal } from "./CartHelper";
 
 import '../css/nav.css'
 
@@ -101,6 +101,18 @@ const Menu = ({ history }) => {
               </NavLink>
             </li>
             )}
+
+           <li className="nav-item">
+                <Link
+                    className='nav-links' activeClassName="is-active"
+                    onClick={closeMobileMenu}
+                >
+                    Cart{" "}
+                    <sup>
+                        <small className="cart-badge">{itemTotal()}</small>
+                    </sup>
+                </Link>
+            </li>
           </ul>
           
         </div>
