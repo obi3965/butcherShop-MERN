@@ -11,6 +11,7 @@
     text-transform: capitalize;
     letter-spacing: 1px;
     margin-left: 10px !important;
+    font-weight: 500;
 }
 .btn{
     background-color:#e60c2d !important;
@@ -33,6 +34,7 @@ input[type="search"]{
     margin-right: 8px;
     border: none !important;
     outline: none !important;
+    text-transform: capitalize;
 }
 ::placeholder {
     color:  #e60c2d !important;

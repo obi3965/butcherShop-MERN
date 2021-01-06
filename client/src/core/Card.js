@@ -45,9 +45,12 @@ const Card = ({ product }) => {
                 <button className="add-to-cart" >
                   Add To Cart
                 </button>
+                <Link to={`/product/${product._id}`}>
                 <button className="view" >
                  view details
                 </button>
+                </Link>
+                
               </div>
             </div> 
         
