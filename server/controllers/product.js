@@ -14,13 +14,14 @@ exports.create = (req, res) => {
         error: "Image could not be uploaded",
       });
     }
+    
     // check for all fields
-    const { name, description, category, author } = fields;
+    const { name, description, price, category, quantity, shipping } = fields;
 
-    if (!name || !description || !author || !category) {
-      return res.status(400).json({
-        error: "All fields are required",
-      });
+    if (!name || !description || !price || !category || !quantity || !shipping) {
+        return res.status(400).json({
+            error: 'All fields are required'
+        });
     }
 
     let product = new Product(fields);
@@ -87,10 +88,7 @@ exports.list = (req, res) => {
                     error: 'Products not found'
                 });
             }
-            res.json({
-                result:products.length,
-                products:products
-            });
+            res.json(products);
         });
 };
 
@@ -107,10 +105,7 @@ exports.listRelated = (req,res) => {
               error: 'products not found'
           })
       }
-      res.json({
-          result:products.length,
-          products:products
-      });
+      res.json(products);
   })
 }
 
@@ -237,4 +232,29 @@ exports.updateProduct = (req, res) => {
       });
     });
   });
+};
+
+
+
+exports.listSearch = (req, res) => {
+  // create query object to hold search value and category value
+  const query = {};
+  // assign search value to query.name
+  if (req.query.search) {
+      query.name = { $regex: req.query.search, $options: 'i' };
+      // assigne category value to query.category
+      if (req.query.category && req.query.category != 'All') {
+          query.category = req.query.category;
+      }
+      // find the product based on query object with 2 properties
+      // search and category
+      Product.find(query, (err, products) => {
+          if (err) {
+              return res.status(400).json({
+                  error: errorHandler(err)
+              });
+          }
+          res.json(products);
+      }).select('-photo');
+  }
 };

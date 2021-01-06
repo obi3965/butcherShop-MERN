@@ -34,6 +34,10 @@ const productSchema = new mongoose.Schema({
         data: Buffer,
         contentType:String
     },
+    sold: {
+        type: Number,
+        default: 0
+    },
     shipping:{
         required:false,
         type:Boolean
