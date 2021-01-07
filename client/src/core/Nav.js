@@ -103,7 +103,7 @@ const Menu = ({ history }) => {
             )}
 
            <li className="nav-item">
-                <Link
+                <Link to="/cart"
                     className='nav-links' activeClassName="is-active"
                     onClick={closeMobileMenu}
                 >
