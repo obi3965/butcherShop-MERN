@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-//import { getProducts, getBraintreeClientToken, processPayment, createOrder } from './apiCore';
-import { emptyCart } from './CartHelper';
-import Card from './Card';
+import { getProducts, getBraintreeClientToken } from './CoreApi';
 import { isAuthenticated } from '../auth';
 import { Link } from 'react-router-dom';
 
@@ -14,7 +12,34 @@ import { Link } from 'react-router-dom';
 
 const Checkout = ({ products, setRun = f => f, run = undefined }) => {
     
-    //get the cart total
+    const [data, setData] = useState({
+        loading: false,
+        success: false,
+        clientToken: null,
+        error: '',
+        instance: {},
+        address: ''
+    });
+
+    //get the token from the backend
+    const userId = isAuthenticated() && isAuthenticated().user._id;
+    const token = isAuthenticated() && isAuthenticated().token;
+    const getToken = (userId, token) => {
+        getBraintreeClientToken(userId, token).then(data => {
+            if (data.error) {
+                console.log(data.error);
+                setData({ ...data, error: data.error });
+            } else {
+                console.log(data);
+                setData({ clientToken: data.clientToken });
+            }
+        });
+    };
+
+  useEffect(() => {
+     getToken(userId, token)
+  }, []);
+
     const getTotal = () => {
        return products.reduce((currentValue, nextValue) => {
            return currentValue + nextValue.count * nextValue.price
