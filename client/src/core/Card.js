@@ -139,10 +139,10 @@ const Card = ({
                
                  
                  {showAddToCartBtn(showAddToCartButton)}
-                
+                {showRemoveButton(showRemoveProductButton)}
                  {showViewBtn(showViewProductBtn)}
                  {showCartUpdateOptions(cartUpdate)}
-                 {showRemoveButton(showRemoveProductButton)}
+                 
                
                 
               </div>
