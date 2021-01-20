@@ -28,10 +28,14 @@
 }
 
 .user-reg{
-    color: #e60c2d;
+    color: #fff;
     line-height: 50px;
     font-size: 20px;
     font-weight: 600;
+    text-decoration: none !important;
+}
+.user-reg:hover{
+  color: #eac100;
 }
 .navbar {
     background: #000;

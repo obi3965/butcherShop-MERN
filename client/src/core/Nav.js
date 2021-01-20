@@ -91,7 +91,7 @@ const Menu = ({ history }) => {
             </div>
             {isAuthenticated() && (
             <li className='nav-item'>
-              <NavLink className="btn btn-outline"
+              <NavLink className="btn btn-signout"
               to='/signout'
               onClick={()=> signout(() =>{
                 history.push('/')
